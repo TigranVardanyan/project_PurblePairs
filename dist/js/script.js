@@ -14,6 +14,13 @@ let domId;
 let arr = [];
 let arrTest = [];
 let arrImg = [];
+
+
+var clickWav = new Audio('data/click.wav');
+var openWav = new Audio('data/open.wav');
+
+
+
 start_game.addEventListener('click' , function() {
 	hardly = document.forms[0];
 	for(var i = 0; i < 2; i++) {
@@ -74,6 +81,7 @@ function cell_set() {
 }
 	document.querySelector('.game_area').addEventListener('click' , function() {
 		var x = event.target;
+		clickWav.play();
 		if(x.nodeName == 'IMG') {
 			x.parentNode.children[0].classList.toggle('rotate');
 			x.parentNode.children[1].classList.toggle('rotate1');
@@ -90,6 +98,7 @@ function cell_set() {
 			}
 			if(counter >= 2) {
 				if(arrTest[0] == arrTest[1]) {
+					openWav.play();
 					arrImg[0].classList.add('openClass')
 					arrImg[0].innerHTML = "";
 					arrImg[1].classList.add('openClass')

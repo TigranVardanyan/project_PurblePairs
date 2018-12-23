@@ -1,3 +1,7 @@
+body {
+	background-color: #fff9c4;
+}
+
 .container .sec_start form {
 	min-height: 300px;
 	min-width: 250px;
@@ -67,7 +71,11 @@
 	z-index: 999;
 	position: absolute;
 	background-image: url();
-	background-color: black;
+	background-color: #ff8f00;
 	height: 70px;
 	width: 70px;
+}
+
+.sec_game {
+	margin-top: 50px;
 }
