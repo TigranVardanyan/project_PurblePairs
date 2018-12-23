@@ -1,0 +1,30 @@
+.container {
+	display: grid;
+	grid-template-columns: 102px 102px 102px 102px 102px 102px;
+	grid-template-rows: 102px 102px 102px 102px 102px 102px;
+}
+
+.container .card {
+	border: 1px solid black;
+	line-height: 100px;
+	text-align: center;
+}
+
+.back {
+	position: absolute;
+}
+
+.card div {
+	height: 100px;
+	width: 100px;
+	backface-visibility: hidden;
+}
+
+.front {
+	transform: rotateY(180deg);
+}
+
+.reverse {
+	transform: rotateY(0deg);
+	transition: all 0.5s;
+}

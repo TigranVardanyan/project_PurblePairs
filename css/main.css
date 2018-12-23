@@ -1,0 +1,46 @@
+.container {
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 102px 102px 102px 102px 102px 102px;
+	    grid-template-columns: 102px 102px 102px 102px 102px 102px;
+	-ms-grid-rows: 102px 102px 102px 102px 102px 102px;
+	    grid-template-rows: 102px 102px 102px 102px 102px 102px;
+}
+
+.container .card {
+	border: 1px solid black;
+	line-height: 100px;
+	text-align: center;
+}
+
+.back {
+	position: absolute;
+}
+
+.card div {
+	height: 100px;
+	width: 100px;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+}
+
+.front {
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
+}
+
+.reverse {
+	-webkit-transform: rotateY(0deg);
+	        transform: rotateY(0deg);
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.backReverse {
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
