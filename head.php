@@ -25,6 +25,9 @@
 	<noscript><div><img src="https://mc.yandex.ru/watch/51528389" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap-grid.css">
+	<link rel="stylesheet" href="css/bootstrap-reboot.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
