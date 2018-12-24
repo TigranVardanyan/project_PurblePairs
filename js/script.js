@@ -60,7 +60,7 @@ start_game.addEventListener('click' , function() {
 			div.className = "img";
 			div.innerHTML = `<div class=\"cell\">
 								<img class=\"cell_front\" src=\"./img/front.jpg\" width="70px" height="70px" alt=\"\">
-								<img class=\"cell_back rotate\" src=\'./img/${item}.jpg\' name="${item}" width="70px" height="70px">
+								<img class=\"cell_back rotate\" src=\'./img/${item+1}.jpg\' name="${item+1}" width="70px" height="70px">
 							</div>`;
 			game_area.appendChild(div.cloneNode(true))	
 		})
@@ -79,7 +79,7 @@ function cell_set() {
 		game_area.classList.add('grid_8')
 	}	
 }
-	document.querySelector('.game_area').addEventListener('click' , function() {
+	document.querySelector('.game_area').addEventListener('click' , function(event) {
 		var x = event.target;
 		clickWav.play();
 		if(x.nodeName == 'IMG') {

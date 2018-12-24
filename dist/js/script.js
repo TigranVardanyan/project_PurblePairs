@@ -60,7 +60,7 @@ start_game.addEventListener('click' , function() {
 			div.className = "img";
 			div.innerHTML = `<div class=\"cell\">
 								<img class=\"cell_front\" src=\"./img/front.jpg\" width="70px" height="70px" alt=\"\">
-								<img class=\"cell_back rotate\" src=\'./img/${item}.jpg\' name="${item}" width="70px" height="70px">
+								<img class=\"cell_back rotate\" src=\'./img/${item+1}.jpg\' name="${item+1}" width="70px" height="70px">
 							</div>`;
 			game_area.appendChild(div.cloneNode(true))	
 		})
@@ -98,14 +98,19 @@ function cell_set() {
 			}
 			if(counter >= 2) {
 				if(arrTest[0] == arrTest[1]) {
-					openWav.play();
-					arrImg[0].classList.add('openClass')
-					arrImg[0].innerHTML = "";
-					arrImg[1].classList.add('openClass')
-					arrImg[1].innerHTML = "";
-					counter = 0;
-					arrTest = [];
-					arrImg = [];
+					game_area.style.pointerEvents = "none";
+					setTimeout(()=> {
+						openWav.play();
+						arrImg[0].classList.add('openClass')
+						arrImg[0].innerHTML = "";
+						arrImg[1].classList.add('openClass')
+						arrImg[1].innerHTML = "";
+						counter = 0;
+						arrTest = [];
+						arrImg = [];
+						game_area.style.pointerEvents = "";
+					},800)
+
 				} else {
 					game_area.style.pointerEvents = "none";
 					setTimeout(() => {
