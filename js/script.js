@@ -98,14 +98,19 @@ function cell_set() {
 			}
 			if(counter >= 2) {
 				if(arrTest[0] == arrTest[1]) {
-					openWav.play();
-					arrImg[0].classList.add('openClass')
-					arrImg[0].innerHTML = "";
-					arrImg[1].classList.add('openClass')
-					arrImg[1].innerHTML = "";
-					counter = 0;
-					arrTest = [];
-					arrImg = [];
+					game_area.style.pointerEvents = "none";
+					setTimeout(()=> {
+						openWav.play();
+						arrImg[0].classList.add('openClass')
+						arrImg[0].innerHTML = "";
+						arrImg[1].classList.add('openClass')
+						arrImg[1].innerHTML = "";
+						counter = 0;
+						arrTest = [];
+						arrImg = [];
+						game_area.style.pointerEvents = "";
+					},800)
+
 				} else {
 					game_area.style.pointerEvents = "none";
 					setTimeout(() => {
