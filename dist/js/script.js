@@ -79,7 +79,7 @@ function cell_set() {
 		game_area.classList.add('grid_8')
 	}	
 }
-	document.querySelector('.game_area').addEventListener('click' , function() {
+	document.querySelector('.game_area').addEventListener('click' , function(event) {
 		var x = event.target;
 		clickWav.play();
 		if(x.nodeName == 'IMG') {
