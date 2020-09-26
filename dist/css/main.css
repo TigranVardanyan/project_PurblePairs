@@ -32,6 +32,7 @@ body {
 	border: 1px solid black ;
 	border-radius: 15px;
 	padding: 10px;
+
 }
 
 .cell_front , .cell_back {
@@ -70,7 +71,7 @@ body {
 .openClass {
 	z-index: 999;
 	position: absolute;
-	background-image: url();
+	/*background-image: url();*/
 	background-color: #ff8f00;
 	height: 70px;
 	width: 70px;

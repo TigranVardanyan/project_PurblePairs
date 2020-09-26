@@ -8,19 +8,23 @@
 			<div class="row">
 				<div class="col d-flex justify-content-center">
 					<form  name="game" class="flex-column align-items-center justify-content-center d-flex">
-						<p>Сложность игры :</p>
+						<p>Difficulty level :</p>
 						<div>
-							<input type="radio" checked="" name="hardly" id="easy_game" value="6">
-							<label for="easy_game">Легко</label>
-							<input type="radio" name="hardly" id="hard_game" value="4">
-							<label for="hard_game">Сложно</label>
+							<input type="radio" checked="" name="difficulty_level" id="game_easy" value="game_easy">
+							<label for="easy_game">Easy</label>
+              <input type="radio" name="difficulty_level" id="game_normal" value="game_normal">
+              <label for="hard_game">Normal</label>
+              <input type="radio" name="difficulty_level" id="game_hard" value="game_hard">
+              <label for="hard_game">Hard</label>
 						</div>
-						<p>Количество полей :</p> 
+						<p>Area type :</p>
 						<div>
-							<input type="radio" checked="" name="cell" id="6_game" value="6">
-							<label for="6_game"> 6 на 6 </label>
-							<input type="radio" name="cell" id="8_game" value="8">
-							<label for="8_game"> 6 на 8 </label>
+							<input type="radio" checked="" name="arena_type" id="arena_easy" value="arena_easy">
+							<label for="6_game"> 6x8 </label> |
+              <input type="radio" name="arena_type" id="arena_normal" value="arena_normal">
+              <label for="8_game"> 8x10 </label> |
+              <input type="radio" name="arena_type" id="arena_hard" value="arena_hard">
+              <label for="8_game"> 10x12 </label>
 						</div>
 						<div  class="start_game">Start</div>
 					</form>
