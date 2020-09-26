@@ -2,12 +2,11 @@
 <html lang="en">
 <?php require_once('head.php') ?>
 <body>
-
 	<div class="container">
 		<section class="sec_start">
 			<div class="row">
 				<div class="col d-flex justify-content-center">
-					<form  name="game" class="flex-column align-items-center justify-content-center d-flex">
+					<form  name="game" class="flex-column align-items-center justify-content-center d-flex" id="game-settings">
 						<p>Difficulty level :</p>
 						<div>
 							<input type="radio" checked="" name="difficulty_level" id="game_easy" value="game_easy">
@@ -26,13 +25,14 @@
               <input type="radio" name="arena_type" id="arena_hard" value="arena_hard">
               <label for="8_game"> 10x12 </label>
 						</div>
-						<div  class="start_game">Start</div>
+						<button class="start_game">Start</button>
 					</form>
 				</div>
 			</div>
 
 		</section>
 		<section class="sec_game hide">
+      <button id="game_restart">Restart</button>
 			<div class="row justify-content-center align-items-center">
 				<div class="game_area"></div>
 			</div>

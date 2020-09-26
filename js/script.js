@@ -17,6 +17,32 @@ let arrTest = [];
 let arrImg = [];
 var clickWav = new Audio('data/click.wav');
 var openWav = new Audio('data/open.wav');
+
+document.querySelector('#game-settings').addEventListener('submit', (e) => {
+  e.preventDefault()
+})
+
+document.querySelector('#game_restart').addEventListener('click', () => {
+  difficulty = 0;
+  difficulty_level = 0;
+  difficulty_level_value = 0;
+  arena = 0;
+  arena_type = 0;
+  arena_type_value = 0;
+  counter = 0;
+  domId = null;
+  arr = [];
+  arrTest = [];
+  arrImg = [];
+  game_area.innerHTML = null;
+  for (var i = 0; i < 2 * arena_type_value[0] * arena_type_value[1]; i++) {
+    cells[i].classList.remove('rotate');
+    cells[i].classList.remove('rotate1');
+  }
+  cells = 0;
+  sec_start.classList.remove('hide');
+  sec_game.classList.add('hide');
+})
 start_game.addEventListener('click', function () {
   difficulty = document.querySelectorAll("[name=difficulty_level]");
 	arena = document.querySelectorAll("[name=arena_type]");
