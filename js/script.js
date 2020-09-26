@@ -10,7 +10,6 @@ let difficulty_level_value;
 let arena;
 let arena_type;
 let arena_type_value;
-let cell_number;
 let counter = 0;
 let domId;
 let arr = [];
@@ -39,9 +38,9 @@ start_game.addEventListener('click', function () {
   arr.forEach(function (item, i, arr) {
     var div = document.createElement('div');
     div.className = "img";
-    div.innerHTML = `<div class=\"cell\">
-								<img class=\"cell_front\" src=\"./img/front.jpg\" width="70px" height="70px" alt=\"\">
-								<img class=\"cell_back rotate\" src=\'./img/ (${item + 1}).jpg\' name="${item}" width="70px" height="70px">
+    div.innerHTML = `<div class=\"cell\" data-imageid="${item}" data-id="${i}">
+								<img class=\"cell_front\" src=\"./img/front.jpg\" alt=\"\">
+								<img class=\"cell_back rotate\" src=\'./img/ (${item + 1}).jpg\' name="${item}">
 							</div>`;
     game_area.appendChild(div.cloneNode(true))
   })
@@ -73,13 +72,13 @@ function cell_set(arena_type) {
 function difficulty_set(difficulty_level) {
 	switch (difficulty_level) {
 		case ('game_easy'):
-			difficulty_level_value = 4;
+			difficulty_level_value = 8;
 			break
 		case ('game_normal'):
 			difficulty_level_value = 6;
 			break
 		case ('game_hard'):
-			difficulty_level_value = 12;
+			difficulty_level_value = 4;
 			break
 		default:
 			difficulty_level_value = 4;
@@ -91,10 +90,10 @@ function setImgs() {
     let arrCounter = 0;
     let randomImg = Math.round(Math.random() * (arena_type_value[0] * arena_type_value[1] / difficulty_level_value - 1));
     arr.push(randomImg);
-    arr.forEach(function (item, j, arr) { //Перебирает массив чтобы не было больше двух одинаковых элементов
+    arr.forEach(function (item, j, arr) {
       if (randomImg == item) {
         arrCounter++;
-        if (arrCounter > difficulty_level_value) { // если добавляется третий, удаляем последний элемент массива и понижает счетчик на 1
+        if (arrCounter > difficulty_level_value) {
           arr.pop();
           --i;
         }
@@ -112,14 +111,14 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
     x.parentNode.children[1].classList.toggle('rotate1');
     arrTest.push(x.parentNode.children[1].name);
     arrImg.push(x.parentNode);
-    if (domId == x.parentNode._DOMIndexerID) {
+    if (domId == x.parentNode.attributes[2].value) {
       counter = 0;
       arrTest = [];
       arrImg = [];
-      domId = x.parentNode._DOMIndexerID;
+      domId = x.parentNode.attributes[1].value;
     }
     else {
-      domId = x.parentNode._DOMIndexerID;
+      domId = x.parentNode.attributes[2].value;
       counter++;
     }
     if (counter >= 2) {
@@ -140,7 +139,7 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
       else {
         game_area.style.pointerEvents = "none";
         setTimeout(() => {
-          for (var i = 0; i < 2 * cell_number * 6; i++) {
+          for (var i = 0; i < 2 * arena_type_value[0] * arena_type_value[1]; i++) {
             cells[i].classList.remove('rotate');
             cells[i].classList.remove('rotate1');
             game_area.style.pointerEvents = "";

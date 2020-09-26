@@ -100,8 +100,8 @@ body {
 	position: absolute;
 	/*background-image: url();*/
 	background-color: #ff8f00;
-	height: 40px;
-	width: 40px;
+	height: auto;
+	width: auto;
 }
 
 .sec_game {
@@ -124,8 +124,8 @@ body {
 
 	.grid_12 {
 		display: grid;
-		grid-template-columns: repeat(8, 40px);
-		grid-template-rows:  repeat(12, 40px);
+		grid-template-columns: repeat(8, 30px);
+		grid-template-rows:  repeat(12, 30px);
 		grid-gap: 3px;
 	}
 }
