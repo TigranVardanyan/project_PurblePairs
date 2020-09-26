@@ -136,11 +136,21 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
   if (x.nodeName == 'IMG') {
     counter++;
     clickWav.play();
-    x.parentNode.children[0].classList.toggle('rotate');
-    x.parentNode.children[1].classList.toggle('rotate1');
+    x.parentNode.children[0].classList.add('rotate');
+    x.parentNode.children[1].classList.add('rotate1');
 
     if (domId == x.parentNode.attributes[2].value) {//click to close image
-
+      if (counter == 2) {
+        console.log('click to close image counter 2')
+        x.parentNode.children[0].classList.remove('rotate');
+        x.parentNode.children[1].classList.remove('rotate1');
+        domId = null;
+        arrImg = [];
+        arrTest = [];
+        counter = 0;
+      } else if (counter == 1) {
+        console.log('click to close image counter 1')
+      }
     }
     else /* click to open image */{
       if (counter == 2) /* compare images */{
@@ -161,7 +171,7 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
             game_area.style.pointerEvents = "";
           }, 800)
         }
-        else /* equal */{
+        else /* not equal */{
           game_area.style.pointerEvents = "none";
           counter = 0;
           arrTest = [];
@@ -182,94 +192,6 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
         arrImg.push(x.parentNode);
         domId = x.parentNode.attributes[2].value
       }
-    }
-
-    if (counter == 2) {
-      if (arrTest[0] == arrTest[1]) {
-        counter = 0;
-        arrTest = [];
-        game_area.style.pointerEvents = "none";
-        setTimeout(() => {
-          openWav.play();
-          arrImg[0].classList.add('openClass')
-          arrImg[0].innerHTML = "";
-          arrImg[1].classList.add('openClass')
-          arrImg[1].innerHTML = "";
-          arrImg = [];
-          game_area.style.pointerEvents = "";
-        }, 800)
-      }
-      else {
-        game_area.style.pointerEvents = "none";
-        counter = 0;
-        arrTest = [];
-        domId = null;
-        const arrImgNew = arrImg.concat();
-        arrImg = [];
-        setTimeout(() => {
-          arrImgNew.forEach((img) => {
-            img.children[0].classList.remove('rotate', 'rotate1');
-            img.children[1].classList.remove('rotate', 'rotate1');
-          })
-          game_area.style.pointerEvents = "";
-        }, 800)
-      }
-    }
-    else if (counter == 1) {
-      arrTest.push(x.parentNode.children[1].name);
-      arrImg.push(x.parentNode);
-      domId = x.parentNode.attributes[2].value
-    }
-    else if (counter == 0) {
-      arrTest.push(x.parentNode.children[1].name);
-      arrImg.push(x.parentNode);
-      if (domId == x.parentNode.attributes[2].value) {
-        arrTest = [];
-        arrImg = [];
-        domId = x.parentNode.attributes[2].value;
-      }
-    }
-
-    if (domId == x.parentNode.attributes[2].value) {
-      counter <= 0 ? counter = 0 : counter--;
-      counter == 0 ? arrImg = [] : arrImg
-      arrTest = [];
-      domId = x.parentNode.attributes[2].value;
-    }
-    else {
-      domId = x.parentNode.attributes[2].value;
-      counter++;
-    }
-    if (counter >= 2) {
-      //if (arrTest[0] == arrTest[1]) {
-      //  counter = 0;
-      //  arrTest = [];
-      //  game_area.style.pointerEvents = "none";
-      //  setTimeout(() => {
-      //    openWav.play();
-      //    arrImg[0].classList.add('openClass')
-      //    arrImg[0].innerHTML = "";
-      //    arrImg[1].classList.add('openClass')
-      //    arrImg[1].innerHTML = "";
-      //    arrImg = [];
-      //    game_area.style.pointerEvents = "";
-      //  }, 800)
-      //}
-      //else {
-      //  game_area.style.pointerEvents = "none";
-      //  counter = 0;
-      //  arrTest = [];
-      //  domId = null;
-      //  const arrImgNew = arrImg.concat();
-      //  arrImg = [];
-      //  setTimeout(() => {
-      //    arrImgNew.forEach((img) => {
-      //      img.children[0].classList.remove('rotate', 'rotate1');
-      //      img.children[1].classList.remove('rotate', 'rotate1');
-      //    })
-      //    game_area.style.pointerEvents = "";
-      //  }, 800)
-      //}
     }
   }
 })
