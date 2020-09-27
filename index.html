@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129274133-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129274133-1');
+  </script>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(51528389, "init", {
+      id:51528389,
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/51528389" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="container">
+		<section class="sec_start">
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<form  name="game" class="game-settings" id="game-settings">
+						<p>Difficulty level :</p>
+						<div>
+							<input type="radio" checked="" name="difficulty_level" id="game_easy" value="game_easy">
+							<label for="easy_game">Easy</label>
+              <input type="radio" name="difficulty_level" id="game_normal" value="game_normal">
+              <label for="hard_game">Normal</label>
+              <input type="radio" name="difficulty_level" id="game_hard" value="game_hard">
+              <label for="hard_game">Hard</label>
+						</div>
+						<p>Area type :</p>
+						<div>
+							<input type="radio" checked="" name="arena_type" id="arena_easy" value="arena_easy">
+							<label for="6_game"> 6x8 </label> |
+              <input type="radio" name="arena_type" id="arena_normal" value="arena_normal">
+              <label for="8_game"> 8x10 </label> |
+              <input type="radio" name="arena_type" id="arena_hard" value="arena_hard">
+              <label for="8_game"> 10x12 </label>
+						</div>
+						<button class="btn start_game">Start</button>
+					</form>
+				</div>
+			</div>
+
+		</section>
+		<section class="sec_game hide">
+      <button class="btn" id="game_restart">End game</button>
+			<div class="row justify-content-center align-items-center">
+				<div class="game_area"></div>
+			</div>
+		</section>
+	</div>
+	
+	<script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
