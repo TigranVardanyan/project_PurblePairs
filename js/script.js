@@ -147,10 +147,6 @@ function play() {
   });
 }
 
-play().then(function() {
-  alert("Done!");
-})
-
 document.querySelector('.game_area').addEventListener('click', function (event) {
   var x = event.target;
   if (x.nodeName == 'IMG') {
@@ -190,6 +186,7 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
             arrImg[1].innerHTML = "";
             arrImg = [];
             if (arena_cells_cleaned_number == arena_cells_number) {
+              openWav.pause();
               play().then(function() {
                 restart()
               })
