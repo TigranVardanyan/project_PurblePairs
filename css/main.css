@@ -3,9 +3,7 @@ h1,h2,h3,h4,h5,h6,p,span,ul,li,body,input {
 	padding: 0;
 	outline: none;
 }
-#game_restart {
-	margin-right: 238px;
-}
+
 .game-settings {
 	display: flex;
 	flex-direction: column;
