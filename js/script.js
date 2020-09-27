@@ -17,10 +17,8 @@ let domId;
 let arr = [];
 let arrTest = [];
 let arrImg = [];
-var clickWav = new Audio('data/click.wav');
-var openWav = new Audio('data/open.wav');
-
-
+let clickWav = new Audio('data/click.wav');
+let openWav = new Audio('data/open.wav');
 document.querySelector('#game-settings').addEventListener('submit', (e) => {
   e.preventDefault()
 })
@@ -39,6 +37,7 @@ const restart = () => {
   arrTest = [];
   arrImg = [];
   game_area.innerHTML = null;
+  game_area.classList.remove('grid_4', 'grid_6', 'grid_12')
   for (let i = 0; i < 2 * arena_cells_number; i++) {
     cells[i].classList.remove('rotate');
     cells[i].classList.remove('rotate1');
@@ -47,12 +46,12 @@ const restart = () => {
   sec_start.classList.remove('hide');
   sec_game.classList.add('hide');
 }
-document.querySelector('#game_restart').addEventListener('click', () => {
+document.querySelector('#game_end').addEventListener('click', () => {
   restart()
 })
 start_game.addEventListener('click', function () {
   difficulty = document.querySelectorAll("[name=difficulty_level]");
-	arena = document.querySelectorAll("[name=arena_type]");
+  arena = document.querySelectorAll("[name=arena_type]");
   for (const val of difficulty) {
     if (val.checked) {
       difficulty_level = val.value;
@@ -68,13 +67,13 @@ start_game.addEventListener('click', function () {
   cell_set(arena_type);
   difficulty_set(difficulty_level);
   arena_cells_number = arena_type_value[0] * arena_type_value[1]
-  setImgs();
+  setCellsAndImgs();
   arr.forEach(function (item, i, arr) {
-    var div = document.createElement('div');
+    let div = document.createElement('div');
     div.className = "img";
     div.innerHTML = `<div class="cell" data-imageid="${item}" data-cellId="${i}">
 								<img class="cell_front" src="./img/front.jpg" alt="">
-								<img class="cell_back rotate" src='./img/(${item + 1}).jpg' name="${item}">
+								<img class="cell_back rotate" src='./img/(${item + 1}).jpg'>
 							</div>`;
     game_area.appendChild(div.cloneNode(true))
   })
@@ -104,22 +103,22 @@ function cell_set(arena_type) {
 }
 
 function difficulty_set(difficulty_level) {
-	switch (difficulty_level) {
-		case ('game_easy'):
-			difficulty_level_value = 8;
-			break
-		case ('game_normal'):
-			difficulty_level_value = 6;
-			break
-		case ('game_hard'):
-			difficulty_level_value = 4;
-			break
-		default:
-			difficulty_level_value = 4;
-	}
+  switch (difficulty_level) {
+    case ('game_easy'):
+      difficulty_level_value = 8;
+      break
+    case ('game_normal'):
+      difficulty_level_value = 6;
+      break
+    case ('game_hard'):
+      difficulty_level_value = 4;
+      break
+    default:
+      difficulty_level_value = 4;
+  }
 }
 
-function setImgs() {
+function setCellsAndImgs() {
   for (let i = 0; i < arena_cells_number; i++) {
     let arrCounter = 0;
     let randomImg = Math.round(Math.random() * (arena_cells_number / difficulty_level_value - 1));
@@ -134,11 +133,10 @@ function setImgs() {
       }
     })
   }
-  console.log(arr)
 }
 
 function play() {
-  return new Promise(function(resolve, reject) { // return a promise
+  return new Promise(function (resolve, reject) { // return a promise
     var audio = new Audio('data/world_clear.wav')// create audio wo/ src
     audio.preload = "auto";                      // intend to play through
     audio.autoplay = true;                       // autoplay when loaded
@@ -154,23 +152,19 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
     clickWav.play();
     x.parentNode.children[0].classList.add('rotate');
     x.parentNode.children[1].classList.add('rotate1');
-
     if (domId == x.parentNode.attributes[2].value) {//click to close image
       if (counter == 2) {
-        console.log('click to close image counter 2')
         x.parentNode.children[0].classList.remove('rotate');
         x.parentNode.children[1].classList.remove('rotate1');
         domId = null;
         arrImg = [];
         arrTest = [];
         counter = 0;
-      } else if (counter == 1) {
-        console.log('click to close image counter 1')
       }
     }
     else /* click to open image */{
       if (counter == 2) /* compare images */{
-        arrTest.push(x.parentNode.children[1].name);
+        arrTest.push(x.parentNode.attributes[1].value);
         arrImg.push(x.parentNode);
         domId = x.parentNode.attributes[2].value
         if (arrTest[0] === arrTest[1]) /* equal */{
@@ -187,7 +181,7 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
             arrImg = [];
             if (arena_cells_cleaned_number == arena_cells_number) {
               openWav.pause();
-              play().then(function() {
+              play().then(function () {
                 restart()
               })
             }
@@ -211,7 +205,7 @@ document.querySelector('.game_area').addEventListener('click', function (event) 
         }
       }
       else if (counter == 1) {
-        arrTest.push(x.parentNode.children[1].name);
+        arrTest.push(x.parentNode.attributes[1].value);
         arrImg.push(x.parentNode);
         domId = x.parentNode.attributes[2].value
       }
