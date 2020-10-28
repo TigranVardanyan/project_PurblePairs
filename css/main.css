@@ -199,4 +199,9 @@ body {
 		width: 36px;
 		height: 36px;
 	}
+
+	.grid_4 .img, .grid_4 .cell, .grid_4 img {
+		width: 75px;
+		height: 75px;
+	}
 }
